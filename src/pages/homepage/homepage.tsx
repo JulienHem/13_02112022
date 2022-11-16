@@ -3,6 +3,7 @@ import Footer from "../../components/footer/footer";
 import IconSecurity from '../../assets/images/icon-security.png';
 import IconChat from '../../assets/images/icon-chat.png';
 import IconMoney from '../../assets/images/icon-money.png';
+import './homepage.scss';
 
 export default function Homepage() {
 

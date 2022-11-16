@@ -1,6 +1,6 @@
 import User from "../models/user";
 
-const path = `http://localhost:3001`;
+const path = `http://localhost:3001/api/v1/user`;
 
 async function login(email: string, password: string) {
     // Simple POST request with a JSON body using fetch
@@ -13,17 +13,14 @@ async function login(email: string, password: string) {
         }),
     };
     try {
-        const response = await fetch(`http://localhost:3001/user/login`, requestOptions);
-        console.log(email, password);
+        const response = await fetch(`${path}/login`, requestOptions);
         const data = await response.json();
-        console.log(data);
+        console.log(data)
         return new User(data);
     } catch (e) {
         console.log(e)
     }
-
 }
-
 export default {
     login,
 }
