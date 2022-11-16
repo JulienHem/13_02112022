@@ -1,10 +1,13 @@
 import './login.scss';
-import ArgentBankLogo from '../../assets/images/argentBankLogo.png'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
 import {useState} from "react";
 import UserService from "../../services/user.service";
 import {useNavigate} from "react-router-dom";
+import {getUser} from "../../redux/user/actions";
+import {useAppDispatch} from "../../hooks/hooks";
+
+
 
 export default function Login() {
 
@@ -12,29 +15,20 @@ export default function Login() {
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string>('');
     const navigate = useNavigate();
+    const dispatch = useAppDispatch()
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
         try {
-            const data = await UserService.login(email, password);
-            console.log(data)
+            const userData = await UserService.login(email, password);
+            dispatch( getUser(userData))
+            navigate('/profile')
         } catch (e) {
             setError('Une erreur est survenue, veuillez réessayer');
         }
     }
 
     return (
-        <div>
-            <nav className="main-nav">
-                <a className="main-nav-logo">
-                    <img
-                        className="main-nav-logo-image"
-                        src={ArgentBankLogo}
-                        alt="Argent Bank Logo"
-                    />
-                    <h1 className="sr-only">Argent Bank</h1>
-                </a>
-            </nav>
             <main className="main bg-dark">
                 <section className="sign-in-content">
                     <FontAwesomeIcon className="sign-in-icon" icon={faUserCircle}/>
@@ -69,6 +63,5 @@ export default function Login() {
                         {error && error}
                 </section>
             </main>
-        </div>
     )
 }

@@ -8,8 +8,6 @@ import './homepage.scss';
 export default function Homepage() {
 
     return (
-        <div>
-            <Header />
             <main>
                 <div className="hero">
                     <section className="hero-content">
@@ -55,9 +53,5 @@ export default function Homepage() {
                     </div>
                 </section>
             </main>
-
-            <Footer />
-        </div>
-
     )
 }

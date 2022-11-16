@@ -3,7 +3,6 @@ import User from "../models/user";
 const path = `http://localhost:3001/api/v1/user`;
 
 async function login(email: string, password: string) {
-    // Simple POST request with a JSON body using fetch
     const requestOptions = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -14,13 +13,34 @@ async function login(email: string, password: string) {
     };
     try {
         const response = await fetch(`${path}/login`, requestOptions);
-        const data = await response.json();
-        console.log(data)
-        return new User(data);
+        const loginData = await response.json();
+        return loginData.body.token
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+async function getUserWithToken(token: string) {
+
+    const myHeaders = new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+    });
+    const requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+    };
+
+
+    try {
+        const response = await fetch(`${path}/profile`, requestOptions);
+        console.log(response)
+        return await response.json();
     } catch (e) {
         console.log(e)
     }
 }
 export default {
     login,
+    getUserWithToken,
 }

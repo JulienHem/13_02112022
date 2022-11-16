@@ -10,7 +10,7 @@ export default function Header() {
 
     return(
         <nav className="main-nav">
-            <a className="main-nav-logo" >
+            <a className="main-nav-logo" onClick={() => navigate('/')}>
                 <img
                     className="main-nav-logo-image"
                     src={BankLogo}
