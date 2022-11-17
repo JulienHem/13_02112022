@@ -1,5 +1,10 @@
-import {  GET_USER, GET_USER_ERROR, GET_USER_SUCCESS, UserActionTypes, UserState } from "./types";
-import {User} from "../../models/user";
+import {
+    GET_USER,
+    GET_USER_ERROR,
+    GET_USER_SUCCESS,
+    UserActionTypes,
+    UserState
+} from "./types";
 
 
 const initialState:  UserState = {

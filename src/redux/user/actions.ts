@@ -9,10 +9,10 @@ export function getUser(token: string){
         dispatch({type : GET_USER})
         try {
             const user = await UserService.getUserWithToken(token)
-            console.log(user)
-            dispatch ({ type : GET_USER_SUCCESS , payload : new User(user.body)})
+
+            return dispatch ({ type : GET_USER_SUCCESS , payload : user.body})
         } catch (error) {
-            dispatch ({type : GET_USER_ERROR , payload : "Can't retrieve user"} )
+            return dispatch ({type : GET_USER_ERROR , payload : "Can't retrieve user"} )
         }
     }
 }

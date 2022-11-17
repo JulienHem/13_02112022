@@ -8,7 +8,6 @@ import {getUser} from "../../redux/user/actions";
 import {useAppDispatch} from "../../hooks/hooks";
 
 
-
 export default function Login() {
 
     const [email, setEmail] = useState<string>('');
@@ -19,49 +18,45 @@ export default function Login() {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        try {
-            const userData = await UserService.login(email, password);
-            dispatch( getUser(userData))
-            navigate('/profile')
-        } catch (e) {
-            setError('Une erreur est survenue, veuillez réessayer');
-        }
+        const userData = await UserService.login(email, password);
+        navigate('/profile');
+        await getUser(userData)(dispatch)
     }
 
     return (
-            <main className="main bg-dark">
-                <section className="sign-in-content">
-                    <FontAwesomeIcon className="sign-in-icon" icon={faUserCircle}/>
-                    <h1>Sign In</h1>
-                    <form>
-                        <div className="input-wrapper">
-                            <label htmlFor="username">Username</label>
-                            <input type="text"
-                                   id="username"
-                                   onChange={e => setEmail(e.target.value)}
-                            />
-                        </div>
-                        <div className="input-wrapper">
-                            <label htmlFor="password">Password</label>
-                            <input type="password"
-                                   id="password"
-                                   onChange={e => setPassword(e.target.value)}
-                            />
-                        </div>
-                        <div className="input-remember">
-                            <input type="checkbox" id="remember-me"/><label htmlFor="remember-me"
-                        >Remember me</label
-                        >
-                        </div>
-                        <button
-                            className="sign-in-button"
-                            onClick={e => handleSubmit(e)}>
-                            Sign In
-                        </button>
-                    </form>
+        <main className="main bg-dark">
+            <section className="sign-in-content">
+                <FontAwesomeIcon className="sign-in-icon" icon={faUserCircle}/>
+                <h1>Sign In</h1>
+                <form>
+                    <div className="input-wrapper">
+                        <label htmlFor="username">Username</label>
+                        <input type="text"
+                               id="username"
+                               onChange={e => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-wrapper">
+                        <label htmlFor="password">Password</label>
+                        <input type="password"
+                               id="password"
+                               onChange={e => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <div className="input-remember">
+                        <input type="checkbox" id="remember-me"/><label htmlFor="remember-me"
+                    >Remember me</label
+                    >
+                    </div>
+                    <button
+                        className="sign-in-button"
+                        onClick={e => handleSubmit(e)}>
+                        Sign In
+                    </button>
+                </form>
 
-                        {error && error}
-                </section>
-            </main>
+                {error && error}
+            </section>
+        </main>
     )
 }

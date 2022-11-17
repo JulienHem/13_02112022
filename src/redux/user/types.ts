@@ -16,7 +16,7 @@ interface getUserAction {
 
 interface getUserActionSuccess {
     type: typeof GET_USER_SUCCESS;
-    payload : User | undefined,
+    payload : User,
 }
 interface getUserActionError {
     type: typeof GET_USER_ERROR;
