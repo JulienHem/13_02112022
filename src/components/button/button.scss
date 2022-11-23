@@ -1,0 +1,25 @@
+.btn {
+  display: block;
+  text-align: center;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.green-btn {
+  background-color: #00bc77;
+  color: #ffffff;
+}
+
+.blue-btn {
+  background-color: #581fff;
+  color: #ffffff;
+}
+
+.white-btn {
+  border: 1px solid #581fff;
+  color: #581fff;
+  background-color: #ffffff;
+}

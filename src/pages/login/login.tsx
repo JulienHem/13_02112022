@@ -6,6 +6,8 @@ import UserService from "../../services/user.service";
 import {useNavigate} from "react-router-dom";
 import {getUser} from "../../redux/user/actions";
 import {useAppDispatch} from "../../hooks/hooks";
+import Input from "../../components/input/input";
+import Button from "../../components/button/button";
 
 
 export default function Login() {
@@ -18,9 +20,17 @@ export default function Login() {
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
-        const userData = await UserService.login(email, password);
-        navigate('/profile');
-        await getUser(userData)(dispatch)
+        try {
+            const userToken = await UserService.login(email, password);
+            if(userToken) {
+                const user = await getUser(userToken)(dispatch);
+                console.log(user);
+                navigate(`/profile/${user.payload.id}`)
+            }
+        } catch (e) {
+            setError('Une erreur est survenue')
+        }
+
     }
 
     return (
@@ -29,30 +39,13 @@ export default function Login() {
                 <FontAwesomeIcon className="sign-in-icon" icon={faUserCircle}/>
                 <h1>Sign In</h1>
                 <form>
-                    <div className="input-wrapper">
-                        <label htmlFor="username">Username</label>
-                        <input type="text"
-                               id="username"
-                               onChange={e => setEmail(e.target.value)}
-                        />
-                    </div>
-                    <div className="input-wrapper">
-                        <label htmlFor="password">Password</label>
-                        <input type="password"
-                               id="password"
-                               onChange={e => setPassword(e.target.value)}
-                        />
-                    </div>
+                    <Input type={'string'} setValue={setEmail} value={email} label={'Email'} htmlTitle={'email'} />
+                    <Input type={'password'} setValue={setPassword} value={password} label={"Password"} htmlTitle={'password'} />
                     <div className="input-remember">
-                        <input type="checkbox" id="remember-me"/><label htmlFor="remember-me"
-                    >Remember me</label
-                    >
+                        <input type="checkbox" id="remember-me"/>
+                        <label htmlFor="remember-me">Remember me</label>
                     </div>
-                    <button
-                        className="sign-in-button"
-                        onClick={e => handleSubmit(e)}>
-                        Sign In
-                    </button>
+                    <Button label={'Sign In'} handleClick={handleSubmit} color={'blue'} />
                 </form>
 
                 {error && error}

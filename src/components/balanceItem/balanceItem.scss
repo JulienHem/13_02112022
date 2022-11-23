@@ -1,0 +1,27 @@
+.balance-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  border: #213547;
+
+  &-start {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: start;
+
+    .title {
+      font-size: 16px;
+    }
+
+    .amount {
+      font-size: 20px;
+    }
+
+    .subTitle {
+      font-size: 12px;
+    }
+  }
+
+}
