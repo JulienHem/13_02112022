@@ -1,26 +1,20 @@
 
 import {configureStore} from "@reduxjs/toolkit";
 import {UserReducer} from "./user/reducer";
+import {TransactionReducer} from "./transactions/reducer";
 
 export const store = configureStore({
 
     reducer: {
         user: UserReducer,
+        transactions: TransactionReducer
     },
 
-    // middleware: (getDefaultMiddleware) =>
-    //     getDefaultMiddleware({
-    //         serializableCheck: {
-    //             // Ignore these action types
-    //             ignoredActions: ['GET_USER_SUCCESS'],
-    //             // Ignore these field paths in all actions
-    //             // ignoredActionPaths: ['meta.arg', 'payload.timestamp'],
-    //             // Ignore these paths in the state
-    //             // ignoredPaths: ['user.content'],
-    //         },
-    //     }),
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 })
-
 
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

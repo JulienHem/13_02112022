@@ -1,11 +1,13 @@
 .btn {
   display: block;
   text-align: center;
-  padding: 8px;
   font-size: 1.1rem;
   font-weight: bold;
   margin-top: 1rem;
   cursor: pointer;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 5px;
 }
 
 .green-btn {
@@ -13,13 +15,23 @@
   color: #ffffff;
 }
 
-.blue-btn {
+.primary {
+  border: 1px solid #581fff;
   background-color: #581fff;
   color: #ffffff;
 }
 
-.white-btn {
+.secondary {
   border: 1px solid #581fff;
   color: #581fff;
   background-color: #ffffff;
 }
+
+.size-s {
+  max-width: 100px;
+}
+
+.size-m {
+  max-width: 200px;
+}
+

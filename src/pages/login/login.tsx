@@ -4,7 +4,7 @@ import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
 import {useState} from "react";
 import UserService from "../../services/user.service";
 import {useNavigate} from "react-router-dom";
-import {getUser} from "../../redux/user/actions";
+import {getUser, setUser} from "../../redux/user/actions";
 import {useAppDispatch} from "../../hooks/hooks";
 import Input from "../../components/input/input";
 import Button from "../../components/button/button";
@@ -16,7 +16,7 @@ export default function Login() {
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string>('');
     const navigate = useNavigate();
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -24,8 +24,13 @@ export default function Login() {
             const userToken = await UserService.login(email, password);
             if(userToken) {
                 const user = await getUser(userToken)(dispatch);
-                console.log(user);
-                navigate(`/profile/${user.payload.id}`)
+                localStorage.setItem('token', userToken);
+                localStorage.setItem('user', JSON.stringify({
+                    id: user.payload.id,
+                    firstName: user.payload.firstName,
+                    lastName: user.payload.lastName
+                }))
+                navigate(`/profile/${(user.payload.id)}`)
             }
         } catch (e) {
             setError('Une erreur est survenue')
@@ -45,7 +50,7 @@ export default function Login() {
                         <input type="checkbox" id="remember-me"/>
                         <label htmlFor="remember-me">Remember me</label>
                     </div>
-                    <Button label={'Sign In'} handleClick={handleSubmit} color={'blue'} />
+                    <Button label={'Sign In'} handleClick={handleSubmit} color={'primary'} size={'s'} />
                 </form>
 
                 {error && error}

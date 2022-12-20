@@ -1,25 +1,26 @@
 import {
-    GET_USER,
-    GET_USER_ERROR,
-    GET_USER_SUCCESS, SET_USER,
-    UserActionTypes,
-    UserState
+    GET_TRANSACTION,
+    GET_TRANSACTION_ERROR,
+    GET_TRANSACTION_SUCCESS,
+    SET_TRANSACTION,
+    TransactionActionTypes,
+    TransactionState
 } from "./types";
 
 
-const initialState:  UserState = {
+const initialState:  TransactionState = {
     content : null,
     selected: null,
     error : '',
     loading : false
 };
 
-export function UserReducer(
+export function TransactionReducer(
     state = initialState,
-    action: UserActionTypes
-): UserState {
+    action: TransactionActionTypes
+): TransactionState {
     switch(action.type) {
-        case GET_USER: {
+        case GET_TRANSACTION: {
             return {
                 ...state,
                 loading : true,
@@ -27,7 +28,7 @@ export function UserReducer(
             };
         }
 
-        case GET_USER_SUCCESS: {
+        case GET_TRANSACTION_SUCCESS: {
             return {
                 ...state,
                 loading : false,
@@ -35,19 +36,19 @@ export function UserReducer(
             };
         }
 
-        case GET_USER_ERROR: {
+        case GET_TRANSACTION_ERROR: {
             return {
                 ...state,
                 loading : false,
                 error : action.payload
             };
         }
-
-        case SET_USER: {
+        case SET_TRANSACTION: {
             return {
                 ...state,
+                loading: false,
                 selected: action.payload
-            };
+            }
         }
 
         default:

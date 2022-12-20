@@ -3,10 +3,10 @@ import './input.scss';
 interface IProps {
     type: string,
     setValue: Function,
-    value: string | number,
+    value ?: string | number,
     error?: boolean,
-    label: string,
-    htmlTitle : string,
+    label ?: string,
+    htmlTitle ?: string,
 }
 
 export default function Input({type, setValue, value, error, label, htmlTitle}: IProps) {

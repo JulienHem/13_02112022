@@ -1,5 +1,3 @@
-import User from "../models/user";
-
 const path = `http://localhost:3001/api/v1/user`;
 
 async function login(email: string, password: string) {
@@ -31,10 +29,8 @@ async function getUserWithToken(token: string) {
         headers: myHeaders,
     };
 
-
     try {
         const response = await fetch(`${path}/profile`, requestOptions);
-        console.log(response)
         return await response.json();
     } catch (e) {
         console.log(e)
