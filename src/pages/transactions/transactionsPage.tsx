@@ -1,33 +1,31 @@
 import Table from "../../components/table/table";
 import TransactionItem from "../../components/transactionItem/transactionItem";
-import {useEffect, useLayoutEffect, useState} from "react";
-import UserService from "../../services/user.service";
-import {useNavigate, useParams} from "react-router-dom";
 import useLogged from "../../customHooks/useCheckUser";
 import {RootState} from "../../redux";
 import {connect} from "react-redux";
-import Transaction from "../../models/transaction";
-import {TransactionReducer} from "../../redux/transactions/reducer";
+import AccountTransaction from "../../models/accountTransaction";
+import './transactionPage.scss'
 
-interface IStatePropss {
-    transactions: Transaction[]
+interface IStateProps {
+    transaction: AccountTransaction | null;
 }
 
-function TransactionsPage({transactions} : IStatePropss) {
+function TransactionsPage({transaction} : IStateProps) {
 
     useLogged();
 
-    const params = useParams();
-    const [transaction, setTransaction] = useState<Transaction>();
-
-    useEffect(() => {
-            setTransaction(transactions.find((res) => res.balanceId === parseInt(params.transactionId as string)))
-    }, [params.transactionId])
-
+    console.log(transaction)
 
     return (
-        <div>
+        <div className="transaction-page">
             <Table>
+                {
+                    transaction?.items.map((item) => {
+                        return (
+                            <TransactionItem key={`transaction-item-${item.id}`} date={item.date} description={item.description} amount={item.amount} balance={item.balance} type={item.type} category={item.category} />
+                        )
+                    })
+                }
             </Table>
         </div>
     )
@@ -36,7 +34,7 @@ function TransactionsPage({transactions} : IStatePropss) {
 function mapStateToProps( state : RootState )
 {
     return {
-        transactions: state.transactions.content
+        transaction: state.account.selectedTransaction
     }
 }
 

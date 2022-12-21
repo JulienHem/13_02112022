@@ -1,8 +1,8 @@
-import Transaction from "../models/transaction";
+import AccountTransaction from "../models/accountTransaction";
 
-export const mockedTransactionsData: Transaction[] = [
+export const mockedTransactionsData: AccountTransaction[] = [
     {
-        accountId: 9349,
+        accountId: 8349,
         items: [
             {
                 id: 1,
@@ -10,52 +10,184 @@ export const mockedTransactionsData: Transaction[] = [
                 description: 'Golden Sun Bakery',
                 amount: '5.00',
                 balance: '2082.79',
-                type: 'electronic'
+                type: 'Electronic',
+                category: 'Food'
             },
             {
                 id: 2,
                 date: 'June 20th, 2020',
                 description: 'Golden Sun Bakery',
-                amount: '10.00',
-                balance: '2087.79',
-                type: 'electronic'
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
 
             },
             {
                 id: 3,
                 date: 'June 20th, 2020',
                 description: 'Golden Sun Bakery',
-                amount: '20.00',
-                balance: '2097.79',
-                type: 'electronic'
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
 
             },
             {
                 id: 4,
                 date: 'June 20th, 2020',
                 description: 'Golden Sun Bakery',
-                amount: '30.00',
-                balance: '2117.79',
-                type: 'electronic'
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
 
             },
             {
                 id: 5,
                 date: 'June 20th, 2020',
                 description: 'Golden Sun Bakery',
-                amount: '40.00',
-                balance: '2147.79',
-                type: 'electronic'
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
 
             },
             {
                 id: 6,
                 date: 'June 20th, 2020',
                 description: 'Golden Sun Bakery',
-                amount: '50.00',
-                balance: '2187.79',
-                type: 'electronic'
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
             },
         ]
-    }
+    },
+    {
+        accountId: 67124,
+        items: [
+            {
+                id: 1,
+                date: 'June 20th, 2020',
+                description: 'Golden Sun Bakery',
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
+            },
+            {
+                id: 2,
+                date: 'June 20th, 2020',
+                description: 'Golden Sun Bakery',
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
+
+            },
+            {
+                id: 3,
+                date: 'June 20th, 2020',
+                description: 'Golden Sun Bakery',
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
+
+            },
+            {
+                id: 4,
+                date: 'June 20th, 2020',
+                description: 'Golden Sun Bakery',
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
+
+            },
+            {
+                id: 5,
+                date: 'June 20th, 2020',
+                description: 'Golden Sun Bakery',
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
+
+            },
+            {
+                id: 6,
+                date: 'June 20th, 2020',
+                description: 'Golden Sun Bakery',
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
+            },
+        ]
+    },
+    {
+        accountId: 5201,
+        items: [
+            {
+                id: 1,
+                date: 'June 20th, 2020',
+                description: 'Golden Sun Bakery',
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
+            },
+            {
+                id: 2,
+                date: 'June 20th, 2020',
+                description: 'Golden Sun Bakery',
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
+
+            },
+            {
+                id: 3,
+                date: 'June 20th, 2020',
+                description: 'Golden Sun Bakery',
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
+
+            },
+            {
+                id: 4,
+                date: 'June 20th, 2020',
+                description: 'Golden Sun Bakery',
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
+
+            },
+            {
+                id: 5,
+                date: 'June 20th, 2020',
+                description: 'Golden Sun Bakery',
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
+
+            },
+            {
+                id: 6,
+                date: 'June 20th, 2020',
+                description: 'Golden Sun Bakery',
+                amount: '5.00',
+                balance: '2082.79',
+                type: 'Electronic',
+                category: 'Food'
+            },
+        ]
+    },
 ]

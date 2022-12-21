@@ -4,8 +4,16 @@ import IconSecurity from '../../assets/images/icon-security.png';
 import IconChat from '../../assets/images/icon-chat.png';
 import IconMoney from '../../assets/images/icon-money.png';
 import './homepage.scss';
+import {useEffect} from "react";
+import {getAccounts} from "../../redux/accounts/actions";
+import {useAppDispatch} from "../../hooks/hooks";
 
 export default function Homepage() {
+
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        dispatch(getAccounts);
+    }, [])
 
     return (
             <main>

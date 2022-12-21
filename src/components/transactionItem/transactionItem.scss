@@ -1,0 +1,38 @@
+.table-line {
+  display: flex;
+  flex-direction: column;
+  max-height: 50px;
+  background-color: white;
+  overflow: hidden;
+  border-bottom: 2px solid rgba(206, 204, 204, 0.8);
+  transition: max-height 200ms ease-out, background-color 200ms;
+
+  &:hover {
+    background-color: rgba(241, 241, 241, 0.8);;
+  }
+
+
+  &-content {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1em 0;
+
+    > div {
+      text-align: center;
+
+      &:first-child{
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.table-more {
+  padding-left: 10em;
+}
+
+.open {
+  max-height: 500px !important;
+  transition: max-height 0.25s ease-in;
+}
+

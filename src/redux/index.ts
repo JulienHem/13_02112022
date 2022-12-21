@@ -1,21 +1,30 @@
-
-import {configureStore} from "@reduxjs/toolkit";
+import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import {UserReducer} from "./user/reducer";
-import {TransactionReducer} from "./transactions/reducer";
+import {AccountReducer} from "./accounts/reducer";
+import {persistReducer} from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+
+const persistConfig = {
+    key: 'root',
+    storage
+}
+
+const rootReducer = combineReducers({
+    user: UserReducer,
+    account: AccountReducer
+})
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
 
-    reducer: {
-        user: UserReducer,
-        transactions: TransactionReducer
-    },
+    reducer: persistedReducer,
 
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false,
         }),
 })
-
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>

@@ -1,26 +1,28 @@
 import {
-    GET_TRANSACTION,
-    GET_TRANSACTION_ERROR,
-    GET_TRANSACTION_SUCCESS,
-    SET_TRANSACTION,
+    GET_ACCOUNTS,
+    GET_ACCOUNTS_ERROR,
+    GET_ACCOUNTS_SUCCESS,
+    SET_ACCOUNT_TRANSACTION,
+    SET_ACCOUNTS,
     TransactionActionTypes,
-    TransactionState
+    TransactionState,
 } from "./types";
 
 
-const initialState:  TransactionState = {
-    content : null,
-    selected: null,
+const initialState: TransactionState = {
+    list : null,
+    selectedAccounts: null,
+    selectedTransaction: null,
     error : '',
     loading : false
 };
 
-export function TransactionReducer(
+export function AccountReducer(
     state = initialState,
     action: TransactionActionTypes
 ): TransactionState {
     switch(action.type) {
-        case GET_TRANSACTION: {
+        case GET_ACCOUNTS: {
             return {
                 ...state,
                 loading : true,
@@ -28,26 +30,34 @@ export function TransactionReducer(
             };
         }
 
-        case GET_TRANSACTION_SUCCESS: {
+        case GET_ACCOUNTS_SUCCESS: {
             return {
                 ...state,
                 loading : false,
-                content : action.payload
+                list : action.payload
             };
         }
 
-        case GET_TRANSACTION_ERROR: {
+        case GET_ACCOUNTS_ERROR: {
             return {
                 ...state,
                 loading : false,
                 error : action.payload
             };
         }
-        case SET_TRANSACTION: {
+
+        case SET_ACCOUNTS: {
             return {
                 ...state,
                 loading: false,
-                selected: action.payload
+                selectedAccounts: action.payload
+            }
+        }
+        case SET_ACCOUNT_TRANSACTION: {
+            return {
+                ...state,
+                loading: false,
+                selectedTransaction: action.payload
             }
         }
 

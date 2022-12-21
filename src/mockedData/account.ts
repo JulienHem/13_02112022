@@ -1,6 +1,6 @@
-import Account from "../models/balance";
+import Account from "../models/account";
 
-export const mockedBalanceData: Account[] = [
+export const mockedAccountData: Account[] = [
     {
         id: 8349,
         amount: '2,082.79',

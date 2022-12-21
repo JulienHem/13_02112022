@@ -9,18 +9,19 @@ export default function Table({children}: IProps) {
 
     return (
 
-        <table>
-            <thead>
-            <tr>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Amount</th>
-                <th>Balance</th>
-            </tr>
-            </thead>
-            <tbody>
-            {children}
-            </tbody>
-        </table>
+        <div className="table-wrapper">
+
+                <div className="table-head">
+                    <p style={{width: '10%'}}></p>
+                    <p style={{width: '15%'}}>Date</p>
+                    <p style={{width: '25%'}}>Description</p>
+                    <p style={{width: '20%'}}>Amount</p>
+                    <p style={{width: '20%'}}>Balance</p>
+                </div>
+                <div className="table-body">
+                    {children}
+
+                </div>
+        </div>
     )
 }

@@ -8,6 +8,8 @@ import {getUser, setUser} from "../../redux/user/actions";
 import {useAppDispatch} from "../../hooks/hooks";
 import Input from "../../components/input/input";
 import Button from "../../components/button/button";
+import {getAccounts, setAccounts} from "../../redux/accounts/actions";
+import {mockedAccountData} from "../../mockedData/account";
 
 
 export default function Login() {
@@ -30,7 +32,8 @@ export default function Login() {
                     firstName: user.payload.firstName,
                     lastName: user.payload.lastName
                 }))
-                navigate(`/profile/${(user.payload.id)}`)
+                navigate(`/profile/${(user.payload.id)}`);
+                dispatch(setAccounts(mockedAccountData))
             }
         } catch (e) {
             setError('Une erreur est survenue')

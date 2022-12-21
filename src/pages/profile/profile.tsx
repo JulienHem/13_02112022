@@ -4,9 +4,9 @@ import {User} from "../../models/user";
 import Input from "../../components/input/input";
 import {useState} from "react";
 import Button from "../../components/button/button";
-import BalanceList from "../../components/balanceList/balanceList";
+import AccountList from "../../components/accountList/accountList";
 import './profile.scss';
-import useCheckUser from "../../customHooks/useCheckUser";
+
 interface IStateProps {
     user: User | null,
 }
@@ -39,7 +39,7 @@ function Profile({user}: IStateProps) {
             </div>
 
             <div className="profile-body">
-                <BalanceList />
+                <AccountList />
             </div>
 
         </div>

@@ -5,9 +5,10 @@ type transactionItems = {
     amount: string,
     balance: string,
     type: string,
+    category: string,
 }
 
-export default class Transaction{
+export default class AccountTransaction {
 
     public accountId : number;
     public items : transactionItems[];

@@ -1,15 +1,8 @@
-import {
-    GET_USER,
-    GET_USER_ERROR,
-    GET_USER_SUCCESS, SET_USER,
-    UserActionTypes,
-    UserState
-} from "./types";
+import {GET_USER, GET_USER_ERROR, GET_USER_SUCCESS, RESET_USER, SET_USER, UserActionTypes, UserState} from "./types";
 
 
 const initialState:  UserState = {
     content : null,
-    selected: null,
     error : '',
     loading : false
 };
@@ -46,8 +39,13 @@ export function UserReducer(
         case SET_USER: {
             return {
                 ...state,
-                selected: action.payload
+                content: action.payload
             };
+        }
+
+        case RESET_USER: {
+            state = initialState
+            return state
         }
 
         default:
