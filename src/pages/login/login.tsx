@@ -27,11 +27,6 @@ export default function Login() {
             if(userToken) {
                 const user = await getUser(userToken)(dispatch);
                 localStorage.setItem('token', userToken);
-                localStorage.setItem('user', JSON.stringify({
-                    id: user.payload.id,
-                    firstName: user.payload.firstName,
-                    lastName: user.payload.lastName
-                }))
                 navigate(`/profile/${(user.payload.id)}`);
                 dispatch(setAccounts(mockedAccountData))
             }

@@ -8,7 +8,7 @@ export function getUser(token: string){
     return async (dispatch : Dispatch) => {
         dispatch({type : GET_USER})
         try {
-            const user = await UserService.getUserWithToken(token)
+            const user = await UserService.getUserWithToken(token);
             return dispatch ({ type : GET_USER_SUCCESS , payload : user.body})
         } catch (error) {
             return dispatch ({type : GET_USER_ERROR , payload : "Can't retrieve user"} )
